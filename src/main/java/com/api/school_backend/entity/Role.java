@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Entity
 @Table(name="role")
 @Data
@@ -14,7 +16,7 @@ public class Role {
     private Long roleId;
     @Column(name =  "role_descripcion")
     private String roleName;
-    @Column(name =  "role_permision")
-    private String  rolePermision;
+    @OneToMany(mappedBy = "userID",cascade = CascadeType.ALL)
+    private List<User> userList;
 
 }
